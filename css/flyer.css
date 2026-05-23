@@ -364,19 +364,21 @@ html, body {
   row-gap: 1.2mm;
   column-gap: 3mm;
   margin: 0;
-  font-size: 8pt;
+  font-size: 7.5pt;
   line-height: 1.45;
 }
 .representative__profile dt {
   color: #c9a96e;
   font-weight: 600;
-  letter-spacing: .15em;
+  letter-spacing: .12em;
   border-right: 1px solid #e3e6ee;
   padding-right: 3mm;
 }
 .representative__profile dd {
   margin: 0;
   color: #3a4360;
+  letter-spacing: 0;
+  white-space: nowrap;
 }
 
 /* --- 強み --- */
@@ -462,7 +464,7 @@ html, body {
   background: #1a2540;
   color: #fff;
   display: grid;
-  grid-template-columns: 1fr 1fr 18mm;
+  grid-template-columns: 1fr 1fr 26mm;
   align-items: center;
   gap: 6mm;
 }
@@ -505,6 +507,7 @@ html, body {
 .back-footer__qr p {
   margin: 1mm 0 0;
   font-size: 6pt;
-  letter-spacing: .1em;
+  letter-spacing: .05em;
   color: #b9c0d4;
+  white-space: nowrap;
 }

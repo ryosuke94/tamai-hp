@@ -1,0 +1,510 @@
+/* ==========================================================================
+   税理士法人 G&J Partners — 会社案内チラシ (A4 両面)
+   ========================================================================== */
+
+/* ---------- 印刷設定 ---------- */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", "Noto Sans JP",
+               "Meiryo", sans-serif;
+  color: #1a2540;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ---------- ページ共通 ---------- */
+.page {
+  width: 210mm;
+  height: 297mm;
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  page-break-after: always;
+}
+.page:last-child { page-break-after: auto; }
+
+/* 画面表示時のみ、ページ間に余白とシャドウ */
+@media screen {
+  body {
+    background: #e9ecef;
+    padding: 20px 0;
+  }
+  .page {
+    margin: 0 auto 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.15);
+  }
+}
+
+/* セクションタイトル共通 */
+.section-title {
+  margin: 0 0 6mm;
+  display: flex;
+  align-items: baseline;
+  gap: 4mm;
+}
+.section-title--center { justify-content: center; }
+.section-title__ja {
+  font-size: 14pt;
+  font-weight: 700;
+  letter-spacing: .12em;
+  color: #1a2540;
+  position: relative;
+  padding-left: 8mm;
+}
+.section-title__ja::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 50%;
+  width: 6mm; height: 1.2px;
+  background: #c9a96e;
+}
+.section-title__en {
+  font-size: 8.5pt;
+  letter-spacing: .25em;
+  color: #c9a96e;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   表面 (Page 1)
+   ========================================================================== */
+
+.page--front {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+/* --- ヘッダー --- */
+.front-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5mm 14mm 0;
+  gap: 6mm;
+}
+.front-header__logo {
+  flex-shrink: 0;
+  line-height: 0;
+}
+.front-header__logo img {
+  height: 20mm;
+  width: 20mm;
+  object-fit: contain;
+  display: block;
+}
+.front-header__meta { text-align: right; }
+.front-header__name {
+  margin: 0;
+  font-size: 8pt;
+  letter-spacing: .3em;
+  color: #6a7280;
+}
+.front-header__brand {
+  margin: 1mm 0 0;
+  font-size: 12pt;
+  font-weight: 600;
+  letter-spacing: .12em;
+  color: #1a2540;
+}
+
+/* --- ヒーロー --- */
+.hero {
+  margin: 4mm 14mm 0;
+  height: 88mm;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1mm;
+}
+.hero__bg {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(26,37,64,.78) 0%,
+    rgba(26,37,64,.55) 55%,
+    rgba(26,37,64,.20) 100%);
+}
+.hero__text {
+  position: absolute;
+  left: 10mm; bottom: 10mm;
+  color: #fff;
+}
+.hero__lead {
+  margin: 0;
+  font-size: 14pt;
+  letter-spacing: .15em;
+  font-weight: 400;
+}
+.hero__title {
+  margin: 2mm 0 3mm;
+  font-size: 32pt;
+  font-weight: 700;
+  letter-spacing: .08em;
+  line-height: 1.1;
+}
+.hero__sub {
+  margin: 0;
+  font-size: 8.5pt;
+  letter-spacing: .25em;
+  color: #c9a96e;
+  font-weight: 500;
+}
+
+/* --- コンセプト --- */
+.concept {
+  margin: 6mm 14mm 0;
+  text-align: center;
+}
+.concept .section-title { justify-content: center; }
+.concept__body {
+  margin: 0;
+  font-size: 10.5pt;
+  line-height: 1.85;
+  color: #2a3450;
+  letter-spacing: .05em;
+}
+.concept__body strong {
+  color: #1a2540;
+  font-weight: 700;
+}
+
+/* --- サービス --- */
+.services {
+  margin: 6mm 14mm 0;
+}
+.services .section-title { justify-content: center; }
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5mm;
+}
+.service-card {
+  border: 1px solid #e3e6ee;
+  border-radius: 1mm;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.service-card__img {
+  height: 42mm;
+  overflow: hidden;
+}
+.service-card__img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.service-card__body {
+  padding: 4mm 4mm 5mm;
+  flex: 1;
+}
+.service-card__no {
+  margin: 0;
+  font-size: 9pt;
+  letter-spacing: .2em;
+  color: #c9a96e;
+  font-weight: 600;
+}
+.service-card__title {
+  margin: 1.5mm 0 2.5mm;
+  font-size: 12pt;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: #1a2540;
+  padding-bottom: 2mm;
+  border-bottom: 1px solid #e3e6ee;
+}
+.service-card__text {
+  margin: 0;
+  font-size: 8.5pt;
+  line-height: 1.7;
+  color: #4a5470;
+}
+
+/* --- フッター(CTA) --- */
+.front-footer {
+  margin: auto 0 0;
+  padding: 5mm 14mm;
+  background: #1a2540;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.front-footer__label {
+  margin: 0;
+  font-size: 9pt;
+  letter-spacing: .2em;
+  color: #c9a96e;
+}
+.front-footer__tel {
+  margin: 1mm 0 0;
+  font-size: 26pt;
+  font-weight: 700;
+  letter-spacing: .05em;
+  line-height: 1;
+}
+.front-footer__hours {
+  margin: 2mm 0 0;
+  font-size: 8pt;
+  color: #b9c0d4;
+  letter-spacing: .1em;
+}
+.front-footer__url { text-align: right; }
+.front-footer__url p {
+  margin: 0;
+  font-size: 8.5pt;
+  letter-spacing: .15em;
+  color: #b9c0d4;
+}
+.front-footer__site {
+  margin-top: 2mm !important;
+  font-size: 11pt !important;
+  color: #fff !important;
+  font-weight: 600;
+  letter-spacing: .08em !important;
+}
+
+/* ==========================================================================
+   裏面 (Page 2)
+   ========================================================================== */
+
+.page--back {
+  padding: 12mm 14mm 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- 代表者 --- */
+.representative {
+  margin-bottom: 6mm;
+  padding-bottom: 6mm;
+  border-bottom: 1px solid #e3e6ee;
+}
+.representative__heading { margin-bottom: 5mm; }
+.representative__inner {
+  display: grid;
+  grid-template-columns: 52mm 1fr;
+  gap: 7mm;
+}
+.representative__photo {
+  text-align: center;
+}
+.representative__photo img {
+  width: 100%;
+  height: 78mm;
+  object-fit: cover;
+  border-radius: 1mm;
+  display: block;
+}
+.representative__body {
+  display: flex;
+  flex-direction: column;
+}
+.representative__role {
+  margin: 0;
+  font-size: 8pt;
+  letter-spacing: .2em;
+  color: #c9a96e;
+  font-weight: 600;
+}
+.representative__name {
+  margin: 1.2mm 0 3mm;
+  padding-bottom: 2.5mm;
+  font-size: 16pt;
+  font-weight: 700;
+  color: #1a2540;
+  letter-spacing: .12em;
+  border-bottom: 1px solid #e3e6ee;
+  display: flex;
+  align-items: baseline;
+  gap: 4mm;
+}
+.representative__name-en {
+  font-size: 8.5pt;
+  letter-spacing: .25em;
+  color: #6a7280;
+  font-weight: 500;
+}
+.representative__greet {
+  margin: 0 0 2.5mm;
+  font-size: 12pt;
+  font-weight: 600;
+  line-height: 1.55;
+  letter-spacing: .05em;
+  color: #1a2540;
+}
+.representative__greet strong {
+  color: #c9a96e;
+  font-weight: 700;
+}
+.representative__text {
+  margin: 0 0 3mm;
+  font-size: 8.5pt;
+  line-height: 1.75;
+  color: #3a4360;
+  letter-spacing: .03em;
+}
+.representative__profile {
+  display: grid;
+  grid-template-columns: 14mm 1fr;
+  row-gap: 1.2mm;
+  column-gap: 3mm;
+  margin: 0;
+  font-size: 8pt;
+  line-height: 1.45;
+}
+.representative__profile dt {
+  color: #c9a96e;
+  font-weight: 600;
+  letter-spacing: .15em;
+  border-right: 1px solid #e3e6ee;
+  padding-right: 3mm;
+}
+.representative__profile dd {
+  margin: 0;
+  color: #3a4360;
+}
+
+/* --- 強み --- */
+.strengths {
+  margin-bottom: 6mm;
+}
+.strengths .section-title { margin-bottom: 4mm; }
+.strengths__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4mm;
+}
+.strength {
+  padding: 4mm 4mm;
+  background: #f6f7fb;
+  border-top: 2px solid #c9a96e;
+  border-radius: 0 0 1mm 1mm;
+}
+.strength__no {
+  margin: 0;
+  font-size: 13pt;
+  font-weight: 700;
+  color: #c9a96e;
+  letter-spacing: .1em;
+  line-height: 1;
+}
+.strength__title {
+  margin: 1.5mm 0 2mm;
+  font-size: 10.5pt;
+  font-weight: 700;
+  color: #1a2540;
+  letter-spacing: .08em;
+}
+.strength__text {
+  margin: 0;
+  font-size: 8pt;
+  line-height: 1.65;
+  color: #4a5470;
+}
+
+/* --- 会社概要 --- */
+.company {
+  margin-bottom: 5mm;
+}
+.company .section-title { margin-bottom: 4mm; }
+.company__inner {
+  display: block;
+}
+.company__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 8.5pt;
+}
+.company__table th,
+.company__table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 1.4mm 4mm;
+  border-bottom: 1px solid #e3e6ee;
+  line-height: 1.4;
+}
+.company__table th {
+  width: 22mm;
+  color: #c9a96e;
+  font-weight: 600;
+  letter-spacing: .15em;
+  white-space: nowrap;
+}
+.company__table td {
+  color: #2a3450;
+}
+.company__access {
+  display: block;
+  margin-top: 1mm;
+  font-size: 7.5pt;
+  color: #6a7280;
+}
+
+/* --- フッター --- */
+.back-footer {
+  margin: auto -14mm 0;
+  padding: 4mm 14mm;
+  background: #1a2540;
+  color: #fff;
+  display: grid;
+  grid-template-columns: 1fr 1fr 18mm;
+  align-items: center;
+  gap: 6mm;
+}
+.back-footer__name {
+  margin: 0;
+  font-size: 10.5pt;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+.back-footer__tag {
+  margin: 1.2mm 0 0;
+  font-size: 7.5pt;
+  color: #c9a96e;
+  letter-spacing: .15em;
+}
+.back-footer__tel {
+  margin: 0;
+  font-size: 12pt;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+.back-footer__url {
+  margin: 1.2mm 0 0;
+  font-size: 8pt;
+  color: #b9c0d4;
+  letter-spacing: .08em;
+}
+.back-footer__qr {
+  text-align: center;
+}
+.back-footer__qr img {
+  width: 14mm;
+  height: 14mm;
+  background: #fff;
+  padding: 0.8mm;
+  border-radius: 1mm;
+  display: block;
+  margin: 0 auto;
+}
+.back-footer__qr p {
+  margin: 1mm 0 0;
+  font-size: 6pt;
+  letter-spacing: .1em;
+  color: #b9c0d4;
+}
